@@ -46,35 +46,6 @@ class View
         $this->engine = new $class($args);
         $this->engine->setTemplate($filename);
         $this->resolved = $filename;
-
-
-
-//        $conf = \App :: config('view');
-//        $engine = "";
-//        foreach ($conf as $key => $value)
-//        {
-//            if (strpos($key, "ext_") === 0)
-//            {
-//                if (str_replace("ext_", "", $key) == $ext)
-//                {
-//                    $engine = $value;
-//                }
-//            }
-//        }
-//        if (empty($engine))
-//        {
-//            $engine = $conf['default'];
-//        }
-//        $class = "mtoView" . mto_camel_case($engine) . "Engine";
-//        mtoClass :: import("mtokit/view/engines/".$class.".class.php");
-//        $this->engine = new $class();
-//        $this->engine->resolve($filename, array(
-//            'callback' => $this->callback,
-//            'vars' => $this->vars,
-//            'block_vars' => $this->blocks
-//        ));
-//        $this->is_resolved = true;
-
     }
 
     function set($key, $value = null, $push = false)
