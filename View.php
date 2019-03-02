@@ -26,6 +26,18 @@ class View
     {
         return new self($this->config);
     }
+    
+    function make($filename)
+    {
+        return $this->createNew()->resolve($filename);
+    }
+    
+    function renderTemplate($filename, $args = [])
+    {
+        $view = $this->make($filename);
+        $view->set($args);
+        return $view->render();
+    }
 
     function resolve($filename)
     {
@@ -46,6 +58,7 @@ class View
         $this->engine = new $class($args);
         $this->engine->setTemplate($filename);
         $this->resolved = $filename;
+        return $this;
     }
 
     function set($key, $value = null, $push = false)
