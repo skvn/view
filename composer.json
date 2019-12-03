@@ -8,7 +8,7 @@
     "skvn/base": "dev-master",
     "skvn/event": "dev-master",
     "skvn/app": "dev-master",
-    "twig/twig": "dev-master"
+    "twig/twig": "^3.0"
   },
   "autoload": {
     "psr-4": {
