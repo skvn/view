@@ -11,8 +11,8 @@ class TwigEngine extends Engine
 
     function init()
     {
-        $loader = new \Twig_Loader_Filesystem($this->config['templates_path']);
-        $this->twig = new \Twig_Environment($loader, $this->config);
+        $loader = new \Twig\Loader\FilesystemLoader($this->config['templates_path']);
+        $this->twig = new \Twig\Environment($loader, $this->config);
         foreach ($this->config['extensions'] ?? [] as $ext) {
             $this->twig->addExtension(new $ext());
         }
