@@ -11,7 +11,15 @@ class TwigEngine extends Engine
 
     function init()
     {
-        $loader = new \Twig\Loader\FilesystemLoader($this->config['templates_path']);
+        $paths = [$this->config['templates_path']];
+        foreach ($this->config['path_finders'] ?? [] as $finder) {
+            $path = (new $finder)->getPath();
+            if (!empty($path)) {
+                array_unshift($paths, $path);
+            }
+        }
+
+        $loader = new \Twig\Loader\FilesystemLoader($paths);
         $this->twig = new \Twig\Environment($loader, $this->config);
         foreach ($this->config['extensions'] ?? [] as $ext) {
             $this->twig->addExtension(new $ext());
